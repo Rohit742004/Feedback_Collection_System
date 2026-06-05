@@ -67,7 +67,7 @@ function Dashboard() {
             </p>
 
             <button
-              onClick={() => navigate("/admin")}
+              onClick={() => navigate("/admin-login")}
             >
               Open
             </button>

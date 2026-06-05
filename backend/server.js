@@ -14,14 +14,27 @@ app.use(express.json());
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/auth', authRoutes);
 
+const adminRoutes = require('./routes/adminRoutes');
+app.use('/api/admin', adminRoutes);
+
 const feedbackRoutes = require('./routes/feedbackRoutes');
 app.use('/api/feedback', feedbackRoutes);
 
+const User = require('./models/User');
+
 // DB connection
-mongoose.connect('mongodb://127.0.0.1:27017/feedbackdb')
+mongoose.connect('mongodb://127.0.0.1:27017/feedbackDB')
 
 // mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('MongoDB connected successfully'))
+  .then(async () => {
+    console.log('MongoDB connected successfully');
+    try {
+      await User.syncIndexes();
+      console.log('✅ User indexes synced');
+    } catch (indexErr) {
+      console.error('❌ User index sync error:', indexErr);
+    }
+  })
   .catch((err) => console.error('MongoDB connection error:', err));
 
 const PORT = process.env.PORT || 5000;

@@ -6,6 +6,8 @@ function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem("adminVerified");
+    localStorage.removeItem("adminName");
     navigate("/");
   };
 
@@ -26,7 +28,7 @@ function Navbar() {
           Feedback
         </button>
 
-        <button onClick={() => navigate("/admin")}>
+        <button onClick={() => navigate("/admin-login")}> 
           Admin
         </button>
 

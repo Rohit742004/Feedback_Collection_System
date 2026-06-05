@@ -26,8 +26,15 @@ function AdminDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const verified = localStorage.getItem("adminVerified") === "true";
+    if (!verified) {
+      alert("Admin verification required");
+      navigate("/admin-login");
+      return;
+    }
+
     fetchFeedbacks();
-  }, []);
+  }, [navigate]);
 
   const fetchFeedbacks = async () => {
 

@@ -38,6 +38,8 @@ function Signup() {
         password: "",
       });
 
+      navigate("/");
+
     } catch (error) {
       alert(error.response?.data?.message || "Signup Failed");
     }
