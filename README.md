@@ -63,10 +63,3 @@ cd frontend
 npm install
 npm start
 
-
-Tejas C Kallur
-B.Tech Computer Science
-2026 Batch
-
-Contact
-For any issues or suggestions, contact: tejaskallur@example.com
